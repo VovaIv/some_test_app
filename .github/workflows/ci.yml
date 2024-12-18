@@ -48,10 +48,10 @@ jobs:
         run: |
           cp config/database.yml.ci config/database.yml
           bin/rails db:create db:schema:load
-
+      - name: Run HAML lint
+        run: bundle exec haml-lint app/views
       - name: Run tests
         env:
           RAILS_ENV: test
         run: |
-          bin/rails test # Run Minitest
-          # bin/rspec # Uncomment this if you're using RSpec
+          bin/rspec # Uncomment this if you're using RSpec

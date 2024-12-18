@@ -1,0 +1,9 @@
+linters:
+  LineLength:
+    max: 120
+  RuboCop:
+    enabled: true
+  AltText:
+    enabled: true
+  Indentation:
+    enabled: true

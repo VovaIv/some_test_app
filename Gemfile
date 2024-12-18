@@ -57,6 +57,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'haml_lint', require: false
 end
 
 group :development do
