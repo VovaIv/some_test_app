@@ -54,4 +54,4 @@ jobs:
         env:
           RAILS_ENV: test
         run: |
-          bin/rspec # Uncomment this if you're using RSpec
+          rspec # Uncomment this if you're using RSpec
