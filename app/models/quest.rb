@@ -1,0 +1,2 @@
+class Quest < User
+end

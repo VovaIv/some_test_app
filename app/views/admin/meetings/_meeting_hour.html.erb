@@ -1,0 +1,12 @@
+<tr data-controller="remove-meeting-hour" data-remove-meeting-hour-target="field">
+  <td><%= f.date_field :day_when, as: :string, label: "Day" %></td>
+  <td><%= f.time_field :from_hour, as: :time, label: "Start Time" %></td>
+  <td><%= f.time_field :to_hour, as: :time, label: "End Time" %></td>
+  <td>
+      <% if f.object.persisted? %>
+        <%= f.check_box :_destroy %>
+      <% else %>
+        <%= link_to 'Remove', '#', class: 'remove_record', data: { action: "click->remove-meeting-hour#remove" } %>
+      <% end %>
+    </td>
+</tr>  

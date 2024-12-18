@@ -1,0 +1,11 @@
+<% content_for :title, "New meeting" %>
+
+<h1>New meeting</h1>
+
+<%= render "form", meeting: @meeting %>
+
+<br>
+
+<div>
+  <%= link_to "Back to meetings", parent_parent_meetings_path %>
+</div>

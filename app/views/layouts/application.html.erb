@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= "Teacher Booking App" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", type: "module", "data-turbo-track": "reload", defer: true %>
+    <script type="module" src="<%= asset_path('application.js') %>"></script>
+  </head>
+
+  <body>
+    <% if user_signed_in? %>
+      <div class="row g-0">
+        <div class="col-sm-6 col-md-10">
+          <div class="card">
+            <div class="card-body">
+              Welcome <%= current_user.email %>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <div class="card">
+            <div class="card-body">
+              <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <%= button_to "Sign in", new_user_session_path %>
+    <% end %>
+
+    <% if current_user&.admin? %>  
+      <%= render layout: 'layouts/admin' do %>
+        <%= yield %>
+      <% end %>
+    <% elsif current_user&.parent? %>  
+      <%= render layout: 'layouts/parent' do %>
+        <%= yield %>
+      <% end %>   
+    <% else %>
+      <%= yield %>
+    <% end %>  
+
+    <div id="dynamic-modal-point"></div>
+  </body>
+</html>

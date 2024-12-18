@@ -1,0 +1,11 @@
+<% content_for :title, "New meeting hour" %>
+
+<h1>New meeting hour</h1>
+
+<%= render "form", meeting_hour: @meeting_hour %>
+
+<br>
+
+<div>
+  <%= link_to "Back to meeting hours", meeting_hours_path %>
+</div>

@@ -1,0 +1,41 @@
+
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Meetings" %>
+
+<div class="accordion" id="meetings">
+  <% if @order == 'teacher' %>
+      <% @meetings.each do |teacher, teacher_meetings| %>
+       <div class="card">
+        <div class="card-header">
+          <%= teacher&.email %>
+        </div>
+        <div class="card-body">
+          <%= render "meetings", meetings: teacher_meetings.paginate(page: params["page_#{teacher.id}"], per_page: 2) %>
+        </div>
+        <%= will_paginate teacher_meetings, param_name: "page_#{teacher.id}", renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+        </div>
+      <% end %>
+  <% else %>
+    <%= render "meetings", meetings: @meetings %>
+    <%= will_paginate  @meetings , renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  <% end %>
+
+</div>
+
+<% content_for :sidebar do %>
+  <div class="card">
+    <div class="card-header">
+      Actions
+    </div>
+    
+    <div class="card-body">
+      <div class="btn-group-vertical gap-2" role="group" aria-label="Vertical button group">
+        <%= link_to "By Teacher", "?order=teacher", class: "btn btn-primary" %>
+        <%= link_to "Unsorted scope", "?order=no_order", class: "btn btn-secondary" %>
+        <%= link_to "New meeting", new_admin_meeting_path, class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>
+
+

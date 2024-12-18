@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-12">
+      <%= yield :title %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-9 mb-3">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <%= link_to 'Users', admin_users_path, class: "nav-link #{'active' if controller_name == 'users'}" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Meetings', admin_meetings_path, class: "nav-link #{'active' if controller_name == 'meetings'}" %>
+        </li>
+      </ul>
+
+      <div class="content">
+        <%= yield %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <%= yield :sidebar %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render "glance" %>
+
+<div>
+  <%= link_to "Edit this user", edit_admin_user_path(current_user_to_edit) %> |
+  <%= link_to "Back to users", admin_users_path %>
+
+  <%= button_to "Destroy this user", polymorphic_path([:admin, current_user_to_edit]), method: :delete %>
+</div>

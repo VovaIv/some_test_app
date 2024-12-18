@@ -1,0 +1,41 @@
+<%= simple_form_for [:admin, @meeting] do |f| %>
+  <% if f.object.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>There were errors with your meeting:</h4>
+      <ul>
+        <% f.object.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.input :teacher_id, as: :select, collection: @teachers.map{ |t| [t.full_name, t.id] } %>
+  <%= f.input :name %>
+  <%= f.input :notes %>
+  <%= f.input :duration %>
+  <h3>Meeting Hours</h3>
+  <div class="table-responsive-sm">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Start Hour</th>
+          <th>End Hour</th>
+          <th>Delete?</th>
+        </tr>
+      </thead>
+      <tbody class='fields'>
+        <%= f.simple_fields_for :meeting_hours, @meeting.get_meeting_hours do |mh| %>    
+          <%= render 'meeting_hour', f: mh  %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= link_to_add_row('Add Meeting Hour', f, :meeting_hours, class: "btn btn-secondary") %> 
+  </p>
+  <div class="d-grid">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>
+

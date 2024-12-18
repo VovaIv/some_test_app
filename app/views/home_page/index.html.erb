@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <h1>Welcome, Admin!</h1>
+  <% else %>
+    <h1>I am thinking what to do with you my <%= current_user.type %></h1>
+  <% end %>
+<% else %>
+  "I don't know you"
+<% end %>
+
+<h1>Welcome to my app!</h1>

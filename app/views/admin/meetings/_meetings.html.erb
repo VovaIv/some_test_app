@@ -1,0 +1,13 @@
+<% meetings.each do |meeting| %>
+  <div class="accordion-item">
+    <%= render meeting %>
+    <p>
+      <%= link_to "Show this meeting", admin_meeting_path(meeting), class: 'btn btn-outline-primary' %>
+      <%= link_to "Preview this meeting", show_modal_admin_meeting_path(meeting), data: { turbo_frame: "meetingmodal#{meeting.id}" }, class: 'btn btn-outline-secondary' %>
+    </p>
+
+    <%= turbo_frame_tag "meetingmodal#{meeting.id}" do %>
+    <% end %>
+  </div>
+<% end %>
+

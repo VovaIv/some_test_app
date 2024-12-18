@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-12">
+      <%= yield :title %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-9 mb-3">
+
+      <div class="content">
+        <%= yield %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <%= yield :sidebar %>
+    </div>
+  </div>
+</div>

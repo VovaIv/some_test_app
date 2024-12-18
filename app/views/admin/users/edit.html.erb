@@ -1,0 +1,12 @@
+<% content_for :title, "Editing user" %>
+
+<h1>Editing User</h1>
+
+<%= render "form" %>
+
+<br>
+
+<div>
+  <%= link_to "Show this user", admin_user_path(current_user_to_edit) %> |
+  <%= link_to "Back to users", admin_users_path %>
+</div>

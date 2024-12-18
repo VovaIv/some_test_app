@@ -1,0 +1,36 @@
+<% meetings.each do |meeting| %>
+  <div class="card mb-3">
+    <h5 class="card-header"><%= meeting.name %></h5>
+    <div class="card-body">
+      <h5 class="card-title">Notes</h5>
+      <p class="card-text"><%= meeting.notes %></p>
+
+      <h5 class="card-title">Duration</h5>
+      <p class="card-text"><%= meeting.duration %> minutes</p>
+
+      <h5 class="card-title">Available Hours</h5>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Available Hours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% meeting.free_hours.each do |day, hours| %>
+            <tr>
+              <td><%= day %></td>
+              <td>
+                <%= hours.map { |h| "#{h[0].strftime("%I:%M %p")} - #{h[1].strftime("%I:%M %p")}" }.join("; ") %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <a href="<%= new_parent_parent_meeting_path(meeting_id: meeting.id) %>" class="btn btn-primary mt-3">
+        Book this meeting
+      </a>
+    </div>
+  </div>
+<% end %>

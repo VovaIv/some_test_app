@@ -1,0 +1,14 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= parent_meeting.meeting.name %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= parent_meeting.meeting.teacher.email %></h6>
+    <h6 class="card-subtitle mb-2 text-muted"><%= parent_meeting.day_when %></h6>
+    <h6 class="card-subtitle mb-2 text-muted"><%= parent_meeting.meeting_hour.strftime("%I:%M %p") %></h6>
+    <p class="card-text"><%= parent_meeting.meeting.notes %></p>
+
+    <%= link_to "Cancel Meeting", 
+                parent_parent_meeting_path(parent_meeting), 
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this meeting?" }, 
+                class: "btn btn-danger" %>
+  </div>
+</div>
