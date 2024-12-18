@@ -53,5 +53,4 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-        run: |
-          rspec # Uncomment this if you're using RSpec
+        run: bundle exec rspec
