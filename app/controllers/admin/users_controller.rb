@@ -40,7 +40,7 @@ class Admin::UsersController < Admin::BaseController
 
     def find_users
       @teachers ||= Teacher.all
-      @quests ||= Quest.all
-      @parents ||= Parent.all
+      @quests   ||= Quest.all
+      @parents  ||= Parent.all
     end
 end
