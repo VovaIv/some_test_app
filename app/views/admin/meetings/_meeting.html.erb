@@ -3,7 +3,7 @@
     <%= meeting.name %>
   </button>
 </h2>
-<div id="<%= dom_id(meeting) %>" class="accordion-collapse collapse" aria-labelledby="<%= meeting.id %>" data-bs-parent="#meetings">
+<div id="<%= dom_id(meeting) %>" class="accordion-collapse collapse <%= 'show' if action_name == 'show' %>" " aria-labelledby="<%= meeting.id %>" data-bs-parent="#meetings">
   <div class="accordion-body">
     <div class="card">
       <div class="card-header">

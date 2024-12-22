@@ -1,0 +1,12 @@
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="h3">Meeting Types List</h1>
+  <%= link_to "New Meeting Type", new_admin_meeting_type_path, data: { turbo_frame: dom_id(MeetingType.new) }, class: "btn btn-primary" %>
+</div>
+
+<%= turbo_frame_tag MeetingType.new do %>
+<% end %>
+
+<%= turbo_frame_tag 'meeting_types' do %>
+  <%= render  @meeting_types %>
+<% end %>

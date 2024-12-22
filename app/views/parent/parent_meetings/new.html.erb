@@ -1,7 +1,9 @@
 <% content_for :title, "New meeting" %>
 
 <h1>New meeting</h1>
+<h4>Duration: <%= @meeting.duration %></h4>
 
+<%= render "available_hours", meeting: @meeting %>
 <%= render "form", meeting: @meeting %>
 
 <br>

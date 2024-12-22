@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         get :show_modal
       end
     end  
+    resources :meeting_types
   end
 
   namespace :parent do

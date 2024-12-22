@@ -6,7 +6,7 @@ class Admin::MeetingsController < Admin::BaseController
   def index
     @order = params[:order] || 'teacher'
     if @order == 'no_order'
-      @meetings = Meeting.includes(:meeting_hours).paginate(page: params[:page], per_page: 2)
+      @meetings = Meeting.includes(:meeting_hours).paginate(page: params[:page], per_page: 6)
     else
       @meetings = Teacher.includes(meetings: :meeting_hours).order(:email).each_with_object({}) do |teacher, result|
         result[teacher] = teacher.meetings.paginate(page: params["page_#{teacher.id}"], per_page: 2)

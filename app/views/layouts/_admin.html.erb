@@ -14,6 +14,9 @@
         <li class="nav-item">
           <%= link_to 'Meetings', admin_meetings_path, class: "nav-link #{'active' if controller_name == 'meetings'}" %>
         </li>
+        <li class="nav-item">
+          <%= link_to 'Meeting Types', admin_meeting_types_path, class: "nav-link #{'active' if controller_name == 'meeting_types'}" %>
+        </li>
       </ul>
 
       <div class="content">
@@ -22,9 +25,11 @@
     </div>
 
     <div class="col-md-3">
-      <div class="card">
-        <%= yield :sidebar %>
-      </div>
+       <% if (sidebar = yield :sidebar).present? %>
+        <div class="card">
+          <%= sidebar %>
+        </div>
+       <% end %> 
     </div>
   </div>
 </div>

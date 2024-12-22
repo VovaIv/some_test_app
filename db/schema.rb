@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_17_155848) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_21_232534) do
   create_table "meeting_hours", force: :cascade do |t|
     t.time "from_hour"
     t.time "to_hour"
@@ -21,6 +21,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_17_155848) do
     t.index ["meeting_id"], name: "index_meeting_hours_on_meeting_id"
   end
 
+  create_table "meeting_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "meetings", force: :cascade do |t|
     t.text "notes"
     t.string "name"
@@ -28,6 +34,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_17_155848) do
     t.datetime "updated_at", null: false
     t.integer "duration"
     t.integer "teacher_id"
+    t.integer "meeting_type_id"
   end
 
   create_table "parent_meetings", force: :cascade do |t|
@@ -36,6 +43,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_17_155848) do
     t.time "meeting_hour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "day_when"
     t.index ["meeting_id", "parent_id"], name: "index_parent_meetings_on_meeting_id_and_parent_id", unique: true
     t.index ["meeting_id"], name: "index_parent_meetings_on_meeting_id"
     t.index ["parent_id"], name: "index_parent_meetings_on_parent_id"
@@ -60,7 +68,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_17_155848) do
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "Field10duration"
     t.string "first_name"
     t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -1,0 +1,5 @@
+<%= turbo_stream.prepend "meeting_types" do %>
+  <%= render partial: "meeting_type", locals: { meeting_type: @meeting_type } %>
+<% end %>
+
+<%= turbo_stream.update MeetingType.new, "" %>

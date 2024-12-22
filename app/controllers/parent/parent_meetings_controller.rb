@@ -1,5 +1,6 @@
 class Parent::ParentMeetingsController < Parent::BaseController
   before_action :set_parent_meeting, only: :destroy
+  before_action :set_meeting, only: [:new, :create]
 
   def index
     @teachers           = Teacher.all
@@ -14,7 +15,6 @@ class Parent::ParentMeetingsController < Parent::BaseController
   end
   
   def new
-    @meeting = Meeting.find(params[:meeting_id])
     @parent_meeting  = ParentMeeting.new(parent: current_user, meeting: @meeting)
   end
 
@@ -35,6 +35,10 @@ class Parent::ParentMeetingsController < Parent::BaseController
 
   private
 
+  def set_meeting
+    @meeting = Meeting.find(params[:meeting_id] || parent_meeting_params[:meeting_id])
+  end  
+  
   def set_parent_meeting
     @parent_meeting = ParentMeeting.find(params[:id])
   end  

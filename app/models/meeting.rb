@@ -1,5 +1,7 @@
 class Meeting < ApplicationRecord
   belongs_to :teacher
+  belongs_to :meeting_type, optional: true
+
   has_many :meeting_hours
   has_many :parent_meetings, dependent: :destroy
   has_many :parents, through: :parent_meetings, source: :parent
@@ -47,12 +49,12 @@ class Meeting < ApplicationRecord
       puts "??"
       puts el.inspect
       if booked_el.between?(el[0], el[1])
-        if (booked_el - el[0]) >= duration
+        if (booked_el - el[0]) >= duration.minutes
           res << [el[0], booked_el]
         end
 
-        if (el[1] - (booked_el + duration)) >= duration
-          res << [booked_el + duration, el[1]]
+        if (el[1] - (booked_el + duration)) >= duration.minutes
+          res << [booked_el + duration.minutes, el[1]]
         end
 
         next
