@@ -1,20 +1,27 @@
 <%= turbo_frame_tag meeting_type do %>
-  <div class="row row-cols-2">
-    <div class="col">
-      <%= link_to meeting_type.name %>
-    </div>
-    <div class="col">
-      <div class="btn-group">
-        <%= button_to "Delete",
-                        admin_meeting_type_path(meeting_type),
-                        method: :delete,
-                        class: "btn btn-danger" %>
-        <%= link_to "Edit",
-                  edit_admin_meeting_type_path(meeting_type),
-                  class: "btn btn-secondary" %>
+  <div class="row g-2 align-items-center">
 
-    
-      </div>
+    <div class="col-8">
+      <H4><%= meeting_type.name %></H4>
+    </div>
+
+    <div class="col-4 d-flex justify-content-end">
+      <% if meeting_type.deletable? %>
+
+        <%= button_to "Delete",
+                      admin_meeting_type_path(meeting_type),
+                      method: :delete,
+                      class: "btn btn-danger btn-sm me-2" %>
+      <% else %>
+        <span class="badge bg-warning text-dark align-self-center me-2">
+          Cannot delete: existing meetings
+        </span>
+      <% end %>
+      
+
+      <%= link_to "Edit",
+                  edit_admin_meeting_type_path(meeting_type),
+                  class: "btn btn-secondary btn-sm" %>
     </div>
   </div>
 <% end %>

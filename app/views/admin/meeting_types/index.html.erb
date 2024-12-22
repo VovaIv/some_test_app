@@ -1,12 +1,22 @@
+<div class="container-fluid">
+  <div class="row align-items-center mb-4">
+    <!-- Title -->
+    <div class="col-md-8">
+      <h1 class="h3 mb-0">Meeting Types List</h1>
+    </div>
+    
+    <div class="col-md-4 text-md-end">
+      <%= link_to "New Meeting Type", 
+                  new_admin_meeting_type_path, 
+                  data: { turbo_frame: dom_id(MeetingType.new) }, 
+                  class: "btn btn-primary btn-sm" %>
+    </div>
+  </div>
 
-<div class="d-flex justify-content-between align-items-center mb-4">
-  <h1 class="h3">Meeting Types List</h1>
-  <%= link_to "New Meeting Type", new_admin_meeting_type_path, data: { turbo_frame: dom_id(MeetingType.new) }, class: "btn btn-primary" %>
+  <%= turbo_frame_tag dom_id(MeetingType.new), class: "mb-3" do %>
+  <% end %>
+
+  <%= turbo_frame_tag 'meeting_types', class: "table-responsive" do %>
+    <%= render @meeting_types %>
+  <% end %>
 </div>
-
-<%= turbo_frame_tag MeetingType.new do %>
-<% end %>
-
-<%= turbo_frame_tag 'meeting_types' do %>
-  <%= render  @meeting_types %>
-<% end %>

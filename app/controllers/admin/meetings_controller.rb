@@ -59,7 +59,7 @@ class Admin::MeetingsController < Admin::BaseController
   end
 
   def meeting_params
-    params.require(:meeting).permit(:notes, :name, :duration, :teacher_id, 
+    params.require(:meeting).permit(:notes, :name, :duration, :teacher_id, :meeting_type_id,
                                     meeting_hours_attributes: [:id, :day_when, :from_hour, :to_hour, :_destroy])
   end
 end

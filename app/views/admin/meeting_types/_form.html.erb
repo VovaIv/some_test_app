@@ -1,10 +1,14 @@
-<%= simple_form_for [:admin, @meeting_type], html: { class: "d-flex align-items-center" } do |f| %>
-
-  <div class="flex-grow-1 me-2">
-    <%= f.input :name, label: false, placeholder: "Enter meeting type name", input_html: { class: "form-control" } %>
+<%= simple_form_for [:admin, @meeting_type] do |f| %>
+  <div class="row g-2 align-items-center">
+    <!-- Input Field -->
+    <div class="col-8">
+      <%= f.input :name, label: false, placeholder: "Enter meeting type name", input_html: { class: "form-control w-100" } %>
+    </div>
+    
+    <!-- Buttons -->
+    <div class="col-4 d-flex justify-content-end">
+      <%= f.button :submit, "Save", class: "btn btn-primary btn-sm me-2", title: "Save" %>
+      <%= link_to "Cancel", admin_meeting_types_path, class: "btn btn-secondary btn-sm", title: "Cancel" %>
+    </div>
   </div>
-
-  <%= f.button :submit, "Save", class: "btn btn-primary btn-sm", title: "Save" %>
-
-  <%= link_to "Cancel", admin_meeting_types_path, class: "btn btn-secondary btn-sm", title: "Cancel" %>
 <% end %>

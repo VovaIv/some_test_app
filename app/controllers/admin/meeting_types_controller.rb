@@ -44,7 +44,7 @@ class Admin::MeetingTypesController < Admin::BaseController
   end
 
   def load_meeting_types
-    @meeting_types = MeetingType.all
+    @meeting_types = MeetingType.all.ordered
   end
 
   def meeting_type_params

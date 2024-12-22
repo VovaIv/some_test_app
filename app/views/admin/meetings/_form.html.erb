@@ -12,6 +12,7 @@
 
   <%= f.input :teacher_id, as: :select, collection: @teachers.map{ |t| [t.full_name, t.id] } %>
   <%= f.input :name %>
+  <%= f.input :meeting_type_id, as: :select, collection: MeetingType.all.map{ |mt| [mt.name, mt.id] } %>
   <%= f.input :notes %>
   <%= f.input :duration %>
   <h3>Meeting Hours</h3>
