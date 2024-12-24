@@ -92,7 +92,8 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
   config.before(:each) do
-    mock_redis = MockRedis.new
-    allow(Redis).to receive(:new).and_return(mock_redis)
+    redis_instance = MockRedis.new
+    Redis.stub(:new).and_return { redis_instance }
+    Redis::Store.stub(:new).and_return { redis_instance }
   end
 end
