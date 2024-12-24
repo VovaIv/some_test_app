@@ -38,7 +38,7 @@ gem "devise"
 
 gem 'simple_form'
 
-gem 'bootstrap', '~> 5.0.1'
+gem 'bootstrap', '~> 5.3.3'
 
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
