@@ -1,82 +1,47 @@
 <% content_for :title, "Users" %>
-</p>
-<H2>Teachers</H2>
-<table class="table">
- <thead>
+<% headings = capture do%>
   <tr>
-  <th>First Name</th>
-  <th>Last Name</th>
-  <th>Role</th>
-  <th>Actions</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Role</th>
+    <th>Last Login</th>
+    <th>Actions</th>
   </tr>
-  </thead>
-  <tbody>
-  <% @teachers.each do |user|%>
-    <tr>
-      <td><%= user.first_name %></td>
-      <td><%= user.last_name %></td>
-      <td><%= user.type %></td>
-      <td>
-        <%= link_to "edit", edit_admin_user_path(user) %>
-        <%= link_to "delete", '#' %>
-      </td>
-   </tr>
-  <%end%>
-  </tbody>
-</table>
-
-<H2>Parents</H2>
-<table class="table">
- <thead>
-  <tr>
-  <th>First Name</th>
-  <th>Last Name</th>
-  <th>Role</th>
-  <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @parents.each do |user|%>
-    <tr>
-      <td><%= user.first_name %></td>
-      <td><%= user.last_name %></td>
-      <td><%= user.type %></td>
-      <td>
-        <%= link_to "edit", edit_admin_user_path(user) %>
-        <%= link_to "delete", '#' %>
-      </td>
-   </tr>
-  <%end%>
-  </tbody>
-</table>
-
-<H2>Quests</H2>
-<table class="table">
- <thead>
-  <tr>
-  <th>First Name</th>
-  <th>Last Name</th>
-  <th>Role</th>
-  <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @quests.each do |user|%>
-    <tr>
-      <td><%= user.first_name %></td>
-      <td><%= user.last_name %></td>
-      <td><%= user.type %></td>
-      <td>
-        <%= link_to "edit", edit_admin_user_path(user) %>
-        <%= link_to "delete", '#' %>
-      </td>
-   </tr>
-  <%end%>
-  </tbody>
-</table>
-<% content_for :sidebar do %>
-  <div class="card-header">
-    Users sidebar
-  </div>
-  <h3>You can not delete or create users</h3>
 <% end %>
+
+</p>
+<h2>Teachers</h2>
+<table class="table uniform-table">
+  <thead>
+    <%= headings %>
+  </thead>
+  <tbody>
+    <% @teachers.each do |user| %>
+      <%= render "user_row", user: user %>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Parents</h2>
+<table class="table uniform-table">
+  <thead>
+    <%= headings %>
+  </thead>
+  <tbody>
+    <% @parents.each do |user| %>
+      <%= render "user_row", user: user %>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Quests</h2>
+<table class="table uniform-table">
+  <thead>
+    <%= headings %>
+  </thead>
+  <tbody>
+    <% @quests.each do |user| %>
+      <%= render "user_row", user: user %>
+    <% end %>
+  </tbody>
+</table>

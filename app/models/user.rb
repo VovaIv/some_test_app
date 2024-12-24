@@ -34,4 +34,14 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def after_database_authentication
+    update_column(:last_login_at, Time.current)
+    REDIS.set("user:last_login_at:#{id}", Time.current.to_s)
+  end
+
+  def last_access
+    stored_time = REDIS.get("user:last_login_at:#{id}")
+    stored_time.present? ? Time.parse(stored_time) : self[:last_login_at]
+  end
 end

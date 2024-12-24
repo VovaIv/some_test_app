@@ -44,6 +44,8 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
 gem 'will_paginate-bootstrap-style'
 
+gem 'redis'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
