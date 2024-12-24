@@ -46,8 +46,6 @@ gem 'will_paginate-bootstrap-style'
 
 gem 'redis'
 
-gem 'mock_redis'
-
 gem 'redis-store'
 
 group :development, :test do
@@ -64,6 +62,7 @@ group :development, :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem 'haml_lint', require: false
+  gem 'mock_redis'
 end
 
 group :development do

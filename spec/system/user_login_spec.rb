@@ -2,12 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "User login", type: :system do
   let(:user) { User.create(email: "test@example.com", password: "password") }
-  let(:redis_instance) { MockRedis.new }
-
-  before do
-    allow(Redis).to receive(:new).and_return(redis_instance)
-    allow(Redis::Store).to receive(:new).and_return(redis_instance)
-  end
 
   it "redirects to the dashboard page after login" do
     visit new_user_session_path
