@@ -93,7 +93,7 @@ RSpec.configure do |config|
 =end
   config.before(:each) do
     redis_instance = MockRedis.new
-    Redis.stub(:new).and_return { redis_instance }
-    Redis::Store.stub(:new).and_return { redis_instance }
+    allow(Redis).to receive(:new).and_return(redis_instance)
+    allow(Redis::Store).to receive(:new).and_return(redis_instance)
   end
 end
