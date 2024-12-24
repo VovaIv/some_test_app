@@ -1,13 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:redis_instance) { MockRedis.new }
-
-  before do
-    allow(Redis).to receive(:new).and_return(redis_instance)
-    allow(Redis::Store).to receive(:new).and_return(redis_instance)
-  end
-  
   it "is valid with valid attributes and quest by default" do
     user = User.new(email: "em@em.com")
     user.password = '111111'
