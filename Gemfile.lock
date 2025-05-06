@@ -147,7 +147,7 @@ GEM
       sysexits (~> 1.1)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
-    importmap-rails (1.2.3)
+    importmap-rails (2.1.0)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
@@ -411,7 +411,7 @@ DEPENDENCIES
   debug
   devise
   haml_lint
-  importmap-rails (~> 1.0)
+  importmap-rails (~> 2.1)
   jbuilder
   mock_redis
   puma (>= 5.0)
