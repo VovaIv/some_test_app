@@ -23,5 +23,13 @@ module TeacherBookingApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    Rails.application.config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'  # Allow requests from any origin. Replace '*' with a specific domain if needed.
+        resource '*',
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
+    end    
   end
 end

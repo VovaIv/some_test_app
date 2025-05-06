@@ -1,15 +1,16 @@
+
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.1"
+gem "rails", "~> 8.0.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", ">= 1.4"
+gem "sqlite3", ">= 2.6.0"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails", "~> 1.0"
+gem "importmap-rails", "~> 2.1"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -38,15 +39,21 @@ gem "devise"
 
 gem 'simple_form'
 
-gem 'bootstrap', '~> 5.0.1'
+gem 'bootstrap', '~> 5.3.3'
 
-gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+gem 'sassc-rails'
+
+gem 'will_paginate', '~> 4.0'
 
 gem 'will_paginate-bootstrap-style'
 
 gem 'redis'
 
 gem 'redis-store'
+
+gem 'rack-cors', require: 'rack/cors'
+
+gem 'active_model_serializers'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
