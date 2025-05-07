@@ -39,7 +39,7 @@ gem "devise"
 
 gem 'simple_form'
 
-gem 'bootstrap', '~> 5.3.3'
+gem 'bootstrap', '~> 5.3.5'
 
 gem 'sassc-rails'
 
